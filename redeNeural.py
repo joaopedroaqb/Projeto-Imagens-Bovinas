@@ -61,7 +61,7 @@ class classificador(nn.Module):
 
 net = classificador()
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(net.parameters(), lr=0.03, momentum=0.0)
+optimizer = optim.SGD(net.parameters(), lr=0.05, momentum=0.0)
 
 device = torch.device('cpu')
 device
@@ -96,7 +96,7 @@ def training_loop(loader, epoch):
     # Imprimindo os dados referentes a essa época
     print('\rÉPOCA {:3d} FINALIZADA: perda {:.5f} - precisão {:.5f}'.format(epoch + 1, running_loss/len(loader), running_accuracy/len(loader)))
 
-epochs = 20
+epochs = 30
 for epoch in range(epochs):
   # Treino
   print("Treinando")

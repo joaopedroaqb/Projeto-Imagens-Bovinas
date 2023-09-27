@@ -57,12 +57,11 @@ def classificarImagem(nome):
     output = output.detach().numpy()
     resultado = np.argmax(output[0])
     doencas = ["vacas-saudaveis", "vacas-doentes"]
-    print('Nome Imagem: ' + nome.split('\\')[3] + f' Resultado: {doencas[resultado]} Real: '+ nome.split('\\')[2])
+    print('Nome Imagem: ' + nome.split('\\')[2] + f' Resultado: {doencas[resultado]} Real: '+ nome.split('\\')[1])
 
 pasta = "val"
 caminhos = [os.path.join(pasta, nome) for nome in os.listdir(pasta)]
 for caminho in caminhos:
-    print(caminho.split('\\')[2])
     file_list = os.listdir(caminho)
     for imagem in file_list:
         classificarImagem(caminho + "\\" + imagem)

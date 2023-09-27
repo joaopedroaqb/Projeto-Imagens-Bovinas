@@ -961,7 +961,7 @@ import shutil
 import random
 
 random.shuffle(imagens)
-setenta_porcento = int(len(imagens)*0.70)
+setenta_porcento = int(len(imagens)*0.75)
 vinte_e_cinco_porcento = int(len(imagens)*0.25)
 imagens_train = imagens[0:setenta_porcento]
 imagens_test = imagens[setenta_porcento:(setenta_porcento+vinte_e_cinco_porcento)]
