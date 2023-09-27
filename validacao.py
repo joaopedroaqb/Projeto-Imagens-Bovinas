@@ -56,10 +56,10 @@ def classificarImagem(nome):
     output = F.softmax(output, dim=1)
     output = output.detach().numpy()
     resultado = np.argmax(output[0])
-    doencas = ["Glioma", "Meningioma", "No-Tumor", "Pituitary"]
+    doencas = ["vacas-saudaveis", "vacas-doentes"]
     print('Nome Imagem: ' + nome.split('\\')[3] + f' Resultado: {doencas[resultado]} Real: '+ nome.split('\\')[2])
 
-pasta = "archive\\Val"
+pasta = "val"
 caminhos = [os.path.join(pasta, nome) for nome in os.listdir(pasta)]
 for caminho in caminhos:
     print(caminho.split('\\')[2])
