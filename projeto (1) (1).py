@@ -961,8 +961,8 @@ import shutil
 import random
 
 random.shuffle(imagens)
-setenta_porcento = int(len(imagens)*0.75)
-vinte_e_cinco_porcento = int(len(imagens)*0.25)
+setenta_porcento = int(len(imagens)*0.65)
+vinte_e_cinco_porcento = int(len(imagens)*0.20)
 imagens_train = imagens[0:setenta_porcento]
 imagens_test = imagens[setenta_porcento:(setenta_porcento+vinte_e_cinco_porcento)]
 imagens_val = imagens[(setenta_porcento+vinte_e_cinco_porcento):]
@@ -991,11 +991,14 @@ for pasta in listaPastas2:
 for foto in imagens_test:
     src_file = os.path.join(source_dir, foto["nome"])
     for pasta in listaPastas2:
-        if any(doenca in [pasta["nome"]] for doenca in foto["doencas"]):
+        if any(doenca in foto["doencas"] for doenca in [pasta["nome"]]):
             dest_folder = f'{pasta["sigla"]}'
             dest_path = os.path.join(folder_name_test, dest_folder)
-            shutil.copy2(src_file, dest_path)
-            break
+            print(f"Origem: {src_file}, Destino: {dest_path}")
+            if os.path.exists(src_file):
+                shutil.copy2(src_file, dest_path)
+            else:
+                print(f"Arquivo não encontrado: {src_file}")
 for foto in imagens_val:
     src_file = os.path.join(source_dir, foto["nome"])
     for pasta in listaPastas2:
